@@ -1,89 +1,256 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/8.2.10/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/8.2.10/firebase-auth.js"></script>
-    <script defer src="/__/firebase/8.2.10/firebase-database.js"></script>
-    <script defer src="/__/firebase/8.2.10/firebase-firestore.js"></script>
-    <script defer src="/__/firebase/8.2.10/firebase-functions.js"></script>
-    <script defer src="/__/firebase/8.2.10/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/8.2.10/firebase-storage.js"></script>
-    <script defer src="/__/firebase/8.2.10/firebase-analytics.js"></script>
-    <script defer src="/__/firebase/8.2.10/firebase-remote-config.js"></script>
-    <script defer src="/__/firebase/8.2.10/firebase-performance.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+a:hover, a:active {
+  background-color: red;
+} 
+  body{ background-color:black;color: gold;  }
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  font-size: 10px;
+  border: none;
+  cursor: pointer;
+}
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+.dropdown-content a {
+  color: black;
+  padding: 15px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: green;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: green;}
+table{
+   overflow-y:scroll;
+   height:380px;
+   display:block;
+}
+
+</style>
+</head>
+<body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/8.2.10/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/8.2.10/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+<div class="dropdown" style="float:left;">
+  <button class="dropbtn"><img src="https://th.bing.com/th/id/OIP.rFmo1ugP4ewwZgxDTDQ_zwHaHa?w=168&h=180&c=7&o=5&dpr=1.25&pid=1.7"height="20px"width="20px"></button>
+  <div class="dropdown-content" style="left:0;">
+    <a href="donate.html">DONATE US</a>
+    <a href="dmca.html">DMCA POLICY</a>
+    <a href="about.html">ABOUT US</a>
+     <a href="search.html">SEARCH FOR ANIME</a>
+     <a href="report.html">REPORT BROKEN LINK OR ANY PROBLEM</a>
+      <a href="signup.html">SIGN UP NOW TO GET UPDATES</a>
+
+  </div>
+</div>
+<center><p>WELCOME  TO   ANIMEHUB</p></center>
+<br>
+<br>
+<br>
+<center><p >COLLECTION LIBRARY</p></center><br>
+<br>
+<div class="table-responsive">
+  <table class="table">
+  <tbody>
+  <tr>
+  <td>
+    <center><p>Stein;s gate 0</p></center>
+  <center><img src="https://m.media-amazon.com/images/M/MV5BYmJhMDYzYzMtNTVlZS00MzgwLWE3ZjAtN2FhZTBlOGQzZmFmXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_UX182_CR0,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br><center><a href="animes\Steins gate0">WATCH/DOWNLOAD</a></center>
+</td>
+     <td>
+      <center><p>Steins; gate</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BMjUxMzE4ZDctODNjMS00MzIwLThjNDktODkwYjc5YWU0MDc0XkEyXkFqcGdeQXVyNjc3OTE4Nzk@._V1_UX182_CR0,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br><center><a href="animes\steins gate.html">WATCH/DOWNLOAD</a></center>
+      </td>
+      <td>
+        <center><p>Ghost in the shell:S.A.C</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BZWQxZDhiNGEtYmRhYy00OGUxLThhYTMtNjUzMjY0YzhiYjU3XkEyXkFqcGdeQXVyNDYzNTI2ODc@._V1_UY268_CR9,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br><center><a href="animes\ghost in the shell.html">WATCH/DOWNLOAD</a></center>  
+      </td>
+      <td>
+        <center><p>Ergo Proxy </p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BOWUxNzIzNzgtYzhiMC00ZTlmLWIxYjctMjhhNDFhOGJmNjRmL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UY268_CR9,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br><center><a href="animes\ergo proxy.html">WATCH/DOWNLOAD</a></center>  
+      </td>
+        <td>
+          <center><p>PSYCHO PASS</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BYmNlMTYzNDMtZjI5NS00NTdjLTlkYWMtMWMzZWJjODY2YzAzXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UY268_CR3,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br><center><a href="animes\psycho pass.html">WATCH/DOWNLOAD</a></center>  
+      </td>
+          <td>
+            <center><p>Cowboy Bepbop</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BNGNlNjBkODEtZThlOC00YzUxLWI0MjMtMjk3YzJmMDFlNWZlXkEyXkFqcGdeQXVyNjI0MDg2NzE@._V1_UX182_CR0,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\cowboybepbop.html">WATCH/DOWNLOAD</a></center> 
+      </td> 
+            <td>
+              <center><p>Avatar</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BODc5YTBhMTItMjhkNi00ZTIxLWI0YjAtNTZmOTY0YjRlZGQ0XkEyXkFqcGdeQXVyODUwNjEzMzg@._V1_UX182_CR0,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\avatar.html
+        ">COMING SOON</a></center> 
+      </td>
+            <td>
+          <center><p>Attack on Titan Season 4</p></center>    
+      <center><img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Attack_on_Titan_The_Final_Season_Key_Visual_2.png"height="240px"width="180px"></center><br>
+      <center><a href="animes\aot final.html">WATCH/DOWNLOAD</a></center> 
+      </td> 
+        <td>
+              <center><p>Black Lagoon</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BNWI2OTNlMDEtNGQ4Ny00ZTk3LWExOTMtYmJiMGJiNzgxMzVmXkEyXkFqcGdeQXVyMjQ1NjEyNzE@._V1_UY268_CR2,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\black lagoon.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+               <td><center><p>Black Lagoon Season 2</p></center>
+      <center><img src="https://www.bing.com/th?id=OIP.0DwE6uQt2CUBuwvou4qh_QHaKj&w=120&h=160&c=8&rs=1&qlt=90&dpr=1.25&pid=3.1&rm=2"height="240px"width="180px"></center><br>
+      <center><a href="animes\black lagoon2.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+            <td><center><p>ERASED</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BNDFmYjRkZWYtNjgyZS00YTY5LWIyMmQtZTI0OGRiOGM5NGY3L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UX182_CR0,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\erased.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+            <td><center><p>Tokyo Ghoul</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BN2E2OTgzODktMjBhYy00MjJjLWI0OTgtNGYxOGNhMWMxOWE4XkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_UY268_CR4,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\tokyo ghoul.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td> 
+            <td><center><p>Tokyo Ghoul Root A</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BOWZmMDdhNTktZTRlZC00YzExLTk2ZTAtM2IxNjc4YzBlYmY0XkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_UY268_CR3,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\tokyo ghoul root A.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td> 
+            <td><center><p>Death Note</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BODkzMjhjYTQtYmQyOS00NmZlLTg3Y2UtYjkzN2JkNmRjY2FhXkEyXkFqcGdeQXVyNTM4MDQ5MDc@._V1_UY268_CR1,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\death note.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td> 
+         
+          <td><center><p>Another</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BNWYzNmZmMTUtNzI1YS00NTYwLWIxYWQtMThmYjY1Y2MwZDc2XkEyXkFqcGdeQXVyNDgyODgxNjE@._V1_UX182_CR0,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\another.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+
+
+  </tr> 
+  </tbody>  
+  </table>
+  <br>
+  <table>
+    <tr>
+            <td><center><p>B The Beginning</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BMzY2ZTcxODctOTk1OC00YTRkLWI5NDMtZGY3NGUxMzE1YzZjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY268_CR4,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\b the beginning.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p>Fullmetal Alchemist 2</p></center>
+      <center><img src="https://m.media-amazon.com/images/M/MV5BZmEzN2YzOTItMDI5MS00MGU4LWI1NWQtOTg5ZThhNGQwYTEzXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY268_CR4,0,182,268_AL__QL50.jpg"height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">COMING SOON</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+              <td><center><p></p></center>
+      <center><img src=""height="240px"width="180px"></center><br>
+      <center><a href="animes\.html
+        ">WATCH/DOWNLOAD</a></center> 
+      </td>
+    </tr>
+  </table>
+   
+  </div>
   </body>
 </html>
